@@ -2,39 +2,51 @@
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
 
-               ' Get the username and password from the input fields
-        Dim username As String = txtUsername.Text.Trim()
+         Dim username As String = txtUsername.Text.Trim()
         Dim password As String = txtPassword.Text.Trim()
+        Dim confirmPassword As String = txtConfirmPassword.Text.Trim()
 
-        ' Validate if the fields are not empty
-        If String.IsNullOrEmpty(username) Or String.IsNullOrEmpty(password) Then
-            MessageBox.Show("Please enter both username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If username = "" Or password = "" Or confirmPassword = "" Then
+            MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
 
-        ' Save the username and password to a text file
-        Using writer As StreamWriter = New StreamWriter("user_credentials.txt", True)
+        If password <> confirmPassword Then
+            MessageBox.Show("Passwords do not match. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        ' Save username and password to a text file
+        Dim filePath As String = "user_credentials.txt"
+        Using writer As New StreamWriter(filePath, True)
             writer.WriteLine(username & "," & password)
         End Using
 
-        MessageBox.Show("Account created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         ' Clear input fields
         txtUsername.Clear()
         txtPassword.Clear()
+        txtConfirmPassword.Clear()
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        ' Get the username and password from the input fields
-        Dim username As String = txtUsername.Text.Trim()
-        Dim password As String = txtPassword.Text.Trim()
+        Dim username As String = txtLoginUsername.Text.Trim()
+        Dim password As String = txtLoginPassword.Text.Trim()
 
-        ' Read the text file to check if the username and password match
+        If username = "" Or password = "" Then
+            MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        ' Check if the entered credentials match any saved credentials
+        Dim filePath As String = "user_credentials.txt"
         Dim found As Boolean = False
-        Using reader As StreamReader = New StreamReader("user_credentials.txt")
+        Using reader As New StreamReader(filePath)
             Dim line As String
-            While (InlineAssignHelper(line, reader.ReadLine())) IsNot Nothing
-                Dim parts As String() = line.Split(","c)
+            While Not reader.EndOfStream
+                line = reader.ReadLine()
+                Dim parts() As String = line.Split(",")
                 If parts.Length = 2 AndAlso parts(0) = username AndAlso parts(1) = password Then
                     found = True
                     Exit While
@@ -42,23 +54,15 @@
             End While
         End Using
 
-        ' Display appropriate message based on login status
         If found Then
-            MessageBox.Show("Login successful.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Invalid username or password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
         ' Clear input fields
-        txtUsername.Clear()
-        txtPassword.Clear()
-    End Sub
-
-    ' Helper function for inline assignment
-    Private Function InlineAssignHelper(Of T)(ByRef target As T, value As T) As T
-        target = value
-        Return value
-    End Function
+        txtLoginUsername.Clear()
+        txtLoginPassword.Clear()
 
     End Sub
 End Class
