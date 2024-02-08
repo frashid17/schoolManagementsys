@@ -12,7 +12,7 @@ This is a simple user authentication system implemented in Visual Basic. It allo
 
 ## How to Use
 
-1. **Clone the Repository**: Clone this repository to your local machine using `git clone https://github.com/your-username/user-authentication-vb.git`.
+1. **Clone the Repository**: Clone this repository to your local machine using `git@github.com:frashid17/schoolManagementsys.git`.
 
 2. **Open the Project**: Open the project in Visual Studio or any other compatible IDE.
 
