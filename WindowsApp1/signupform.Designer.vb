@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class signupform
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class signupform
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(signupform))
         Me.Label1 = New System.Windows.Forms.Label()
@@ -30,7 +30,6 @@ Partial Class signupform
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.label3 = New System.Windows.Forms.Label()
         Me.txtConfirmPassword = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -93,15 +92,6 @@ Partial Class signupform
         Me.txtConfirmPassword.Size = New System.Drawing.Size(100, 20)
         Me.txtConfirmPassword.TabIndex = 6
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(557, 72)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(170, 95)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Dashboard"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'signupform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -109,7 +99,6 @@ Partial Class signupform
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtConfirmPassword)
         Me.Controls.Add(Me.label3)
         Me.Controls.Add(Me.btnLogin)
@@ -132,5 +121,4 @@ Partial Class signupform
     Friend WithEvents btnLogin As Button
     Friend WithEvents label3 As Label
     Friend WithEvents txtConfirmPassword As TextBox
-    Friend WithEvents Button1 As Button
 End Class
